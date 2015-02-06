@@ -23,3 +23,20 @@ class UserFactory(SQLAlchemyModelFactory):
     phone_number = '0401231234'
     guild = 'Tietokilta'
     class_year = 'N'
+
+
+class DealGroupFactory(SQLAlchemyModelFactory):
+    class Meta:
+        model = diilikone.models.DealGroup
+
+    name = 'Fyysikkokilta'
+    owner = factory.SubFactory(UserFactory)
+
+
+class DealFactory(SQLAlchemyModelFactory):
+    class Meta:
+        model = diilikone.models.Deal
+
+    size = 75
+    deal_group = factory.SubFactory(DealGroupFactory)
+    salesperson = factory.SubFactory(UserFactory)
