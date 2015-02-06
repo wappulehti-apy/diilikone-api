@@ -1,5 +1,5 @@
-from .dummy import Dummy
+from .provision import Provision
 
 __all__ = (
-    Dummy
+    Provision
 )
