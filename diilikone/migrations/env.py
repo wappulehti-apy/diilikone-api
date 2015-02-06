@@ -9,13 +9,15 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import create_engine, pool
 
-from diilikone import Application, load_models
-from diilikone.extensions import db
-
 ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), os.pardir, os.pardir)
 )
+
 sys.path.append(ROOT)
+
+from diilikone import Application, load_models
+from diilikone.extensions import db
+
 
 
 app = Application()
