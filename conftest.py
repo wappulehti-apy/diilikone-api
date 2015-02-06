@@ -1,18 +1,16 @@
 import contextlib
-import os
 
 import pytest
-from flask import Response, _app_ctx_stack, _request_ctx_stack, json
+from flask import _app_ctx_stack, _request_ctx_stack, json, Response
 from sqlalchemy import event
 from sqlalchemy.pool import Pool
 from werkzeug import cached_property
 
-from diilikone import Application, load_models
+from diilikone import Application
 from diilikone.extensions import db
 
 
 class DatabaseGuard(object):
-
     def __init__(self, enabled=True):
         self.enabled = True
         event.listen(Pool, 'connect', self.on_connect)
@@ -42,26 +40,6 @@ def database_guard():
     problems.
     """
     return DatabaseGuard()
-
-
-def _get_process_number(config):
-    SLAVE_ID_PREFIX_LENGTH = 2
-    try:
-        slaveid = config.slaveinput['slaveid']
-    except AttributeError:
-        zero_based_process_number = 0
-    else:
-        zero_based_process_number = int(slaveid[SLAVE_ID_PREFIX_LENGTH:])
-    return zero_based_process_number + 1
-
-
-def _set_process_number_to_env(config):
-    number = _get_process_number(config)
-    os.environ['TEST_PROCESS_NUMBER'] = '' if number == 1 else str(number)
-
-
-def pytest_configure(config):
-    _set_process_number_to_env(config)
 
 
 class TestResponse(Response):
@@ -105,20 +83,14 @@ def request_ctx(request, app):
     ctx.pop()
 
 
-@pytest.fixture
-def logged_in_user():
-    return None
-
-
-@pytest.fixture
-def client(request, app, database):
+@pytest.fixture(scope='session')
+def client(request, app):
     return app.test_client()
 
 
 @pytest.yield_fixture(scope='session')
 def database_schema(request, app, database_guard):
     with database_guard.disabled(), app.app_context():
-        load_models()
         db.create_all()
 
     yield
@@ -130,7 +102,6 @@ def database_schema(request, app, database_guard):
 def _database(database_guard):
     with database_guard.disabled():
         yield
-
         db.session.remove()
 
         # Delete all data from tables.

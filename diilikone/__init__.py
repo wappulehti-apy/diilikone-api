@@ -27,7 +27,9 @@ class Application(Flask):
 
     def _init_views(self):
         from .views.dummy import dummy
+        from .views.provision import provision
         self.register_blueprint(dummy)
+        self.register_blueprint(provision)
 
 
 def load_models():
