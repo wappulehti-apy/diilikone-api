@@ -1,7 +1,8 @@
 import pytest
 from sqlalchemy_utils import assert_non_nullable
 
-from tests.factories import DealFactory
+from diilikone.extensions import db
+from tests.factories import DealFactory, ProductTypeFactory
 
 
 @pytest.mark.usefixtures('database')
@@ -23,3 +24,11 @@ class TestDeal(object):
         assert repr(deal) == "<Deal size=%s, salesperson='%s'>" % (
             deal.size, deal.salesperson.name
         )
+
+    def test_deal_products(self):
+        deal = DealFactory()
+        product_type = ProductTypeFactory()
+        deal.product_types.append(product_type)
+        db.session.commit()
+
+        assert product_type.deals == [deal]

@@ -40,3 +40,12 @@ class DealFactory(SQLAlchemyModelFactory):
     size = 75
     deal_group = factory.SubFactory(DealGroupFactory)
     salesperson = factory.SubFactory(UserFactory)
+
+
+class ProductTypeFactory(SQLAlchemyModelFactory):
+    class Meta:
+        model = diilikone.models.ProductType
+
+    name = 'paita M'
+    price = 10.50
+    stock = 20
