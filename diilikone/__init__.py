@@ -27,8 +27,10 @@ class Application(Flask):
 
     def _init_views(self):
         from .views.dummy import dummy
+        from .views.deal_groups import deal_groups
         from .views.provision import provision
         self.register_blueprint(dummy)
+        self.register_blueprint(deal_groups)
         self.register_blueprint(provision)
 
 
