@@ -21,6 +21,10 @@ class ProductType(db.Model):
 
     stock = db.Column(db.Integer, nullable=False)
 
+    @property
+    def left_in_stock(self):
+        return self.stock - len(self.deals)
+
     def __repr__(self):
         return '<{cls} name={name!r}, price={price!r}>'.format(
             cls=self.__class__.__name__,
