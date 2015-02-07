@@ -26,6 +26,11 @@ class DealGroup(db.Model):
 
     owner = db.relationship('User')
 
+    @property
+    def total_size(self):
+        sizes = [deal.size for deal in self.deals]
+        return sum(sizes)
+
     def __repr__(self):
         return '<{cls} name={name!r}>'.format(
             cls=self.__class__.__name__,
