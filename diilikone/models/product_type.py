@@ -15,7 +15,7 @@ class ProductType(db.Model):
     name = db.Column(db.Unicode(255), nullable=False)
 
     price = db.Column(
-        db.Numeric(scale=2),
+        db.Numeric(scale=2, precision=5),
         nullable=False
     )
 
