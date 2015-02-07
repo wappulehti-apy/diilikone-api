@@ -1,11 +1,18 @@
 import pytest
 from sqlalchemy_utils import assert_max_length, assert_non_nullable
 
-from tests.factories import DealGroupFactory
+from tests.factories import DealGroupFactory, DealFactory
 
 
 @pytest.mark.usefixtures('database')
 class TestDealGroup(object):
+    @pytest.fixture
+    def deal_group(self):
+        group = DealGroupFactory()
+        DealFactory(size=25, deal_group=group)
+        DealFactory(size=100, deal_group=group)
+        return group
+
     @pytest.mark.parametrize(
         'column',
         (
@@ -23,3 +30,6 @@ class TestDealGroup(object):
     def test_repr(self):
         deal_group = DealGroupFactory.build()
         assert repr(deal_group) == "<DealGroup name='%s'>" % deal_group.name
+
+    def test_total_size_sums_deal_sizes(self, deal_group):
+        assert deal_group.total_size == 125
