@@ -32,17 +32,10 @@ class Deal(db.Model):
         UUIDType,
         db.ForeignKey('deal_group.id', ondelete='RESTRICT'),
         index=True,
-        nullable=False
+        nullable=True
     )
 
-    deal_group = db.relationship(
-        'DealGroup',
-        backref=db.backref(
-            'deals',
-            cascade='all, delete-orphan',
-            passive_deletes=True
-        )
-    )
+    deal_group = db.relationship('DealGroup', backref=db.backref('deals'))
 
     salesperson_id = db.Column(
         UUIDType,
