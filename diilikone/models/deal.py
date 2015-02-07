@@ -2,6 +2,20 @@ from sqlalchemy_utils import UUIDType
 
 from diilikone.extensions import db
 
+deal_product_type = db.Table(
+    'deal_product_type',
+    db.Column(
+        'deal_id',
+        UUIDType(binary=False),
+        db.ForeignKey('deal.id', ondelete='cascade')
+    ),
+    db.Column(
+        'product_type_id',
+        UUIDType(binary=False),
+        db.ForeignKey('product_type.id', ondelete='cascade')
+    )
+)
+
 
 class Deal(db.Model):
     __tablename__ = 'deal'
@@ -18,17 +32,10 @@ class Deal(db.Model):
         UUIDType,
         db.ForeignKey('deal_group.id', ondelete='RESTRICT'),
         index=True,
-        nullable=False
+        nullable=True
     )
 
-    deal_group = db.relationship(
-        'DealGroup',
-        backref=db.backref(
-            'deals',
-            cascade='all, delete-orphan',
-            passive_deletes=True
-        )
-    )
+    deal_group = db.relationship('DealGroup', backref=db.backref('deals'))
 
     salesperson_id = db.Column(
         UUIDType,
@@ -46,6 +53,12 @@ class Deal(db.Model):
             uselist=False,
             passive_deletes=True
         )
+    )
+
+    product_types = db.relationship(
+        'ProductType',
+        secondary=deal_product_type,
+        backref=db.backref('deals')
     )
 
     def __repr__(self):
