@@ -1,7 +1,8 @@
 import pytest
 from sqlalchemy_utils import assert_non_nullable
 
-from tests.factories import ProductTypeFactory
+from diilikone.extensions import db
+from tests.factories import ProductTypeFactory, DealFactory
 
 
 @pytest.mark.usefixtures('database')
@@ -23,3 +24,12 @@ class TestProductType(object):
         assert repr(product_type) == "<ProductType name='%s', price=%s>" % (
             product_type.name, product_type.price
         )
+
+    def test_left_in_stock(self):
+        product_type = ProductTypeFactory(stock=5)
+        for _ in range(3):
+            deal = DealFactory()
+            deal.product_types.append(product_type)
+        db.session.commit()
+
+        assert product_type.left_in_stock == 2

@@ -15,11 +15,15 @@ class ProductType(db.Model):
     name = db.Column(db.Unicode(255), nullable=False)
 
     price = db.Column(
-        db.Numeric(scale=2),
+        db.Numeric(scale=2, precision=5),
         nullable=False
     )
 
     stock = db.Column(db.Integer, nullable=False)
+
+    @property
+    def left_in_stock(self):
+        return self.stock - len(self.deals)
 
     def __repr__(self):
         return '<{cls} name={name!r}, price={price!r}>'.format(

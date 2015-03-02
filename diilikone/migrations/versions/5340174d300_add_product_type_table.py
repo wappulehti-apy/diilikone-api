@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('product_type',
     sa.Column('id', UUIDType(binary=False), server_default=sa.text('uuid_generate_v4()'), nullable=False),
     sa.Column('name', sa.Unicode(length=255), nullable=False),
-    sa.Column('price', sa.Numeric(scale=2), nullable=False),
+    sa.Column('price', sa.Numeric(scale=2, precision=5), nullable=False),
     sa.Column('stock', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
