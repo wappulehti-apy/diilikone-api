@@ -1,9 +1,15 @@
 import sqlalchemy as sa
 from flask.ext.cors import CORS
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy_utils import force_auto_coercion
 
 db = SQLAlchemy()
 cors = CORS()
+
+
+# Assign automatic data type coercion. For example str representations of UUIDs
+# are automatically coerced into UUID objects.
+force_auto_coercion()
 
 
 @sa.event.listens_for(db.metadata, 'before_create')
