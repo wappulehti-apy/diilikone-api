@@ -5,7 +5,7 @@ from flask import Flask
 import pkgutil
 import importlib
 
-from .extensions import db
+from .extensions import cors, db
 
 
 class Application(Flask):
@@ -23,7 +23,7 @@ class Application(Flask):
 
     def _init_extensions(self):
         db.init_app(self)
-        pass
+        cors.init_app(self)
 
     def _init_views(self):
         from .views.dummy import dummy

@@ -1,8 +1,9 @@
-from flask.ext.sqlalchemy import SQLAlchemy
 import sqlalchemy as sa
-
+from flask.ext.cors import CORS
+from flask.ext.sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
+cors = CORS()
 
 
 @sa.event.listens_for(db.metadata, 'before_create')
