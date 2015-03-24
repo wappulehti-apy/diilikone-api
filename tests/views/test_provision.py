@@ -22,6 +22,9 @@ class TestProvision(object):
         DealFactory(size=100, deal_group=group)
         return group
 
+    def test_url(self):
+        assert url_for('provision.get') == '/provision/individual'
+
     def test_returns_200(self, client, provisions):
         response = client.get(url_for('provision.get'))
         assert response.status_code == 200
