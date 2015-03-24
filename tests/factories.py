@@ -13,6 +13,14 @@ class IndividualProvisionFactory(SQLAlchemyModelFactory):
     price_per_magazine = 1.2
 
 
+class GroupProvisionFactory(SQLAlchemyModelFactory):
+    class Meta:
+        model = diilikone.models.GroupProvision
+
+    quantity = 25
+    price_per_magazine = 1.2
+
+
 class UserFactory(SQLAlchemyModelFactory):
     class Meta:
         model = diilikone.models.User
