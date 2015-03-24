@@ -1,10 +1,9 @@
-from sqlalchemy_utils import UUIDType
-
 from diilikone.extensions import db
+from sqlalchemy_utils import UUIDType
 
 
 class Provision(db.Model):
-    __tablename__ = 'provision'
+    __tablename__ = 'individual_provision'
 
     id = db.Column(
         UUIDType(binary=False),
