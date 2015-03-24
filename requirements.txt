@@ -4,8 +4,9 @@ Flask-Failsafe==0.2
 Flask-Script==2.0.5
 Flask-SQLAlchemy==2.0
 Flask==0.10.1
-psycopg2==2.5.4
 SQLAlchemy-Defaults==0.4.3
 SQLAlchemy-Utils==0.27.4
 SQLAlchemy==0.9.8
+-e git+https://github.com/marshmallow-code/marshmallow.git@7f3c5f43561c3f1f29442aa391ca24f8d80e43d7#egg=marshmallow-dev
+psycopg2==2.5.4
 validators==0.7
