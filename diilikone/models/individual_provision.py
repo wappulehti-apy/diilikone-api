@@ -3,8 +3,8 @@ from sqlalchemy_utils import UUIDType
 from diilikone.extensions import db
 
 
-class Provision(db.Model):
-    __tablename__ = 'provision'
+class IndividualProvision(db.Model):
+    __tablename__ = 'individual_provision'
 
     id = db.Column(
         UUIDType(binary=False),

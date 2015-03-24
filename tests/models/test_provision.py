@@ -2,14 +2,14 @@ import pytest
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy_utils import assert_non_nullable
 
-from tests.factories import ProvisionFactory
+from tests.factories import IndividualProvisionFactory
 
 
 @pytest.mark.usefixtures('database')
 class TestProvision(object):
     @pytest.fixture
     def provision(self):
-        return ProvisionFactory(
+        return IndividualProvisionFactory(
             quantity=25,
             price_per_magazine=1.25
         )
@@ -26,6 +26,6 @@ class TestProvision(object):
         assert_non_nullable(provision, column_name)
 
     def test_quantity_is_unique(self):
-        ProvisionFactory(quantity=25)
+        IndividualProvisionFactory(quantity=25)
         with pytest.raises(IntegrityError):
-            ProvisionFactory(quantity=25)
+            IndividualProvisionFactory(quantity=25)

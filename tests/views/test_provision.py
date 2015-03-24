@@ -1,7 +1,8 @@
 import pytest
 from flask import url_for
 
-from tests.factories import ProvisionFactory, DealGroupFactory, DealFactory
+from tests.factories import (DealFactory, DealGroupFactory,
+                             IndividualProvisionFactory)
 
 
 @pytest.mark.usefixtures('request_ctx', 'database')
@@ -9,9 +10,9 @@ class TestProvision(object):
     @pytest.fixture
     def provisions(self):
         return [
-            ProvisionFactory(quantity=25, price_per_magazine=1.2),
-            ProvisionFactory(quantity=50, price_per_magazine=1.25),
-            ProvisionFactory(quantity=150, price_per_magazine=1.40)
+            IndividualProvisionFactory(quantity=25, price_per_magazine=1.2),
+            IndividualProvisionFactory(quantity=50, price_per_magazine=1.25),
+            IndividualProvisionFactory(quantity=150, price_per_magazine=1.40)
         ]
 
     @pytest.fixture
@@ -20,6 +21,9 @@ class TestProvision(object):
         DealFactory(size=25, deal_group=group)
         DealFactory(size=100, deal_group=group)
         return group
+
+    def test_url(self):
+        assert url_for('provision.get') == '/provision/individual'
 
     def test_returns_200(self, client, provisions):
         response = client.get(url_for('provision.get'))

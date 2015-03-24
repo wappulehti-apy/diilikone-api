@@ -5,9 +5,9 @@ import diilikone.models
 from .sqlalchemy_model_factory import SQLAlchemyModelFactory
 
 
-class ProvisionFactory(SQLAlchemyModelFactory):
+class IndividualProvisionFactory(SQLAlchemyModelFactory):
     class Meta:
-        model = diilikone.models.Provision
+        model = diilikone.models.IndividualProvision
 
     quantity = 25
     price_per_magazine = 1.2
