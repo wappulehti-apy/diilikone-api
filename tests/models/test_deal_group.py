@@ -1,7 +1,7 @@
 import pytest
 from sqlalchemy_utils import assert_max_length, assert_non_nullable
 
-from tests.factories import DealGroupFactory, DealFactory
+from tests.factories import DealFactory, DealGroupFactory
 
 
 @pytest.mark.usefixtures('database')

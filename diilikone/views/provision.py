@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, abort
 
-from diilikone.models import Provision, DealGroup
 import validators
+from diilikone.models import DealGroup, IndividualProvision
 
 provision = Blueprint('provision', __name__, url_prefix='/provision')
 
@@ -18,7 +18,7 @@ def get():
         group = DealGroup.query.get_or_404(group_id)
         group_deal_size = group.total_size
     deal_size += group_deal_size
-    provision = Provision.query.filter_by(quantity=deal_size).first_or_404()
+    provision = IndividualProvision.query.filter_by(quantity=deal_size).first_or_404()
     return jsonify(
         {'price_per_magazine': str(provision.price_per_magazine)}
     ), 200
