@@ -1,0 +1,24 @@
+Hyvä myyjä!
+
+Olet juuri sinetöinyt Wapustasi unohtumattoman kokemuksen tekemällä Äpy-diilin. Alta löydät yhteenvedon diilisi tiedoista sekä henkilökohtaisen myyjäpalvelijasi yhteystiedot.
+
+Muistathan, että voit vielä nostaa diilisi provikkaa liittämällä henkilökohtaisen diilisi johonkin ryhmädiiliin tai perustamalla oman ryhmädiilin. Tämän voit tehdä ottamalla yhteyttä henkilökohtaiseen myyjäpalvelijaasi.
+
+Koko: {{ deal.size }} lehteä
+Henkilökohtainen provision: {{ provision.price_per_magazine }}€ / lehti
+{% if deal.product_types %}Tuotteet:
+  {%- for product in deal.product_types %}
+    - {{ product.name -}}
+  {%- endfor -%}
+{%- endif %}
+
+{% if deal.deal_group -%}
+Ryhmä: {{ deal.deal_group.name }}
+Bonusprovisio: {{ group_provision.price_per_magazine }}€ / lehti
+{%- endif %}
+
+Terveisin,
+Diilikoneesi, M. Asiina
+diilit@apy.fi
+
+Äpy - Neljä kirjainta joihin voit luottaa
