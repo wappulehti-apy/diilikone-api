@@ -5,7 +5,7 @@ Olet juuri sinetöinyt Wapustasi unohtumattoman kokemuksen tekemällä Äpy-diil
 Muistathan, että voit vielä nostaa diilisi provikkaa liittämällä henkilökohtaisen diilisi johonkin ryhmädiiliin tai perustamalla oman ryhmädiilin. Tämän voit tehdä ottamalla yhteyttä henkilökohtaiseen myyjäpalvelijaasi.
 
 Koko: {{ deal.size }} lehteä
-Henkilökohtainen provision: {{ provision.price_per_magazine }}€ / lehti
+Henkilökohtainen provision: {{ provision }}€ / lehti
 {% if deal.product_types %}Tuotteet:
   {%- for product in deal.product_types %}
     - {{ product.name -}}
@@ -14,7 +14,7 @@ Henkilökohtainen provision: {{ provision.price_per_magazine }}€ / lehti
 
 {% if deal.deal_group -%}
 Ryhmä: {{ deal.deal_group.name }}
-Bonusprovisio: {{ group_provision.price_per_magazine }}€ / lehti
+Bonusprovisio: {{ group_provision }}€ / lehti
 {%- endif %}
 
 Terveisin,
