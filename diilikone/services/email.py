@@ -11,7 +11,7 @@ def _calculateIndividualProvision(deal):
     base = provision.price_per_magazine
     for product in deal.product_types:
         base -= product.price / deal.size
-    return base
+    return round(base, 2)
 
 
 def _get_group_provision(group):
