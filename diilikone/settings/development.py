@@ -10,7 +10,7 @@ SQLALCHEMY_DATABASE_URI = os.environ.get(
 )
 CORS_HEADERS = 'Content-Type'
 
-MAIL_SUPPRESS_SEND = False
+MAIL_SUPPRESS_SEND = True
 
 MAIL_SERVER = os.environ.get('MAIL_SERVER')
 
