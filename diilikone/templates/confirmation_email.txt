@@ -18,7 +18,7 @@ Bonusprovisio: {{ group_provision }}€ / lehti
 {%- endif %}
 
 Terveisin,
-Diilikoneesi, M. Asiina
+Myyjäpalvelijasi, M. Asiina
 diilit@apy.fi
 
 Äpy - Neljä kirjainta joihin voit luottaa
