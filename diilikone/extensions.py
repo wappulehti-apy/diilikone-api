@@ -2,9 +2,12 @@ import sqlalchemy as sa
 from flask.ext.cors import CORS
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import force_auto_coercion
+from flask_mail import Mail
 
-db = SQLAlchemy()
 cors = CORS()
+db = SQLAlchemy()
+mail = Mail()
+
 
 
 # Assign automatic data type coercion. For example str representations of UUIDs
