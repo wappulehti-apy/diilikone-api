@@ -11,3 +11,4 @@ SQLAlchemy==0.9.8
 -e git+https://github.com/marshmallow-code/marshmallow.git@7f3c5f43561c3f1f29442aa391ca24f8d80e43d7#egg=marshmallow-dev
 psycopg2==2.5.4
 validators==0.7
+Flask-Admin==1.1.0
