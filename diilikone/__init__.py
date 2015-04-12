@@ -55,8 +55,6 @@ class Application(Flask):
         admin.add_view(ProductView(ProductType, db.session))
 
 
-
-
 def load_models():
     """
     Load models from the subpackages of the application.
