@@ -5,7 +5,7 @@ from flask import Flask
 import pkgutil
 import importlib
 
-from .extensions import cors, db, mail
+from .extensions import cors, db, mail, login_manager
 
 
 class Application(Flask):
@@ -26,6 +26,7 @@ class Application(Flask):
         cors.init_app(self)
         db.init_app(self)
         mail.init_app(self)
+        login_manager.init_app(self)
 
     def _init_views(self):
         from .views.dummy import dummy

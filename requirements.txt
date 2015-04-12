@@ -12,3 +12,4 @@ SQLAlchemy==0.9.8
 psycopg2==2.5.4
 validators==0.7
 Flask-Admin==1.1.0
+Flask-Login==0.2.11

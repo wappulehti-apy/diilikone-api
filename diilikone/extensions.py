@@ -4,9 +4,17 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import force_auto_coercion
 from flask_mail import Mail
 
+from flask.ext.login import LoginManager
+
+login_manager = LoginManager()
 cors = CORS()
 db = SQLAlchemy()
 mail = Mail()
+
+@login_manager.user_loader
+def load_user(user_id):
+    from .models.user import User
+    return User.query.get(user_id)
 
 
 
