@@ -5,7 +5,7 @@ from flask import Flask
 import pkgutil
 import importlib
 
-from .extensions import cors, db, mail
+from .extensions import cors, db, mail, login_manager
 
 
 class Application(Flask):
@@ -14,6 +14,7 @@ class Application(Flask):
         self._init_settings(environment)
         self._init_extensions()
         self._init_views()
+        self._init_admin_views()
 
     def _init_settings(self, environment=None):
         if environment is None:
@@ -25,6 +26,7 @@ class Application(Flask):
         cors.init_app(self)
         db.init_app(self)
         mail.init_app(self)
+        login_manager.init_app(self)
 
     def _init_views(self):
         from .views.dummy import dummy
@@ -37,6 +39,20 @@ class Application(Flask):
         self.register_blueprint(deal_groups)
         self.register_blueprint(provision)
         self.register_blueprint(product_types)
+
+    def _init_admin_views(self):
+        from flask.ext.admin import Admin
+        from diilikone.models import User, Deal, DealGroup, ProductType
+        from diilikone.admin.view import UserView, ProductView, DealGroupView, DealView
+        from diilikone.admin.login import admin_login
+
+        self.register_blueprint(admin_login)
+
+        admin = Admin(self)
+        admin.add_view(UserView(User, db.session))
+        admin.add_view(DealView(Deal, db.session))
+        admin.add_view(DealGroupView(DealGroup, db.session))
+        admin.add_view(ProductView(ProductType, db.session))
 
 
 def load_models():

@@ -1,0 +1,7 @@
+<h1>Login</h1>
+<form method="POST" action="/admin/login">
+  {{ form.csrf_token }}
+  <span>{{form.email.label}}:</span>{{ form.email }}</br>
+  <span>{{form.password.label}}:</span>{{ form.password }}
+  <input class="btn btn-default" type="submit" value="Log in">
+</form>

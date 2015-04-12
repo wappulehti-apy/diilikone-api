@@ -1,9 +1,10 @@
-from sqlalchemy_utils import EmailType, UUIDType
+from flask.ext.login import UserMixin
+from sqlalchemy_utils import EmailType, PasswordType, UUIDType
 
 from diilikone.extensions import db
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'user'
 
     id = db.Column(
@@ -25,6 +26,8 @@ class User(db.Model):
     phone_number = db.Column(db.Unicode(20), nullable=True)
 
     signed_at = db.Column(db.DateTime, nullable=True)
+
+    password = db.Column(PasswordType(128, schemes=['sha512_crypt']))
 
     @property
     def name(self):

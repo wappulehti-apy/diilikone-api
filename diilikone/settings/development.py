@@ -2,6 +2,8 @@ import os
 
 SECRET_KEY = 'development_key'
 
+WTF_CSRF_ENABLED = False
+
 DEBUG = True
 
 SQLALCHEMY_DATABASE_URI = os.environ.get(
