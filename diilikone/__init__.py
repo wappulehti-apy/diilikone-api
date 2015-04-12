@@ -42,9 +42,11 @@ class Application(Flask):
 
     def _init_admin_views(self):
         from flask.ext.admin import Admin
-        from flask.ext.admin.contrib.sqla import ModelView
         from diilikone.models import User, Deal, DealGroup, ProductType
         from diilikone.admin.view import UserView, ProductView, DealGroupView, DealView
+        from diilikone.admin.login import admin_login
+
+        self.register_blueprint(admin_login)
 
         admin = Admin(self)
         admin.add_view(UserView(User, db.session))
