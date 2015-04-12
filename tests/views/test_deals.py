@@ -2,13 +2,20 @@ import json
 
 import pytest
 from flask import url_for
+from flexmock import flexmock
 
+from diilikone.services import email
 from diilikone.models import Deal, User
-from tests.factories import DealGroupFactory, ProductTypeFactory
+from tests.factories import DealGroupFactory, ProductTypeFactory, IndividualProvisionFactory
 
 
 @pytest.mark.usefixtures('request_ctx', 'database')
 class DealsPOSTTestCase(object):
+    @pytest.fixture(autouse=True)
+    def mocked_email_confirmation(self):
+        mocked = flexmock(email)
+        mocked.should_receive('send_confirmation_email')
+
     @pytest.fixture
     def deal_group(self):
         return DealGroupFactory(

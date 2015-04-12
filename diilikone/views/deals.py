@@ -4,7 +4,7 @@ from diilikone.extensions import db
 from diilikone.models import Deal, ProductType, User
 from diilikone.schemas import DealSchema
 
-from diilikone.services.email import send_confirmation_email
+from diilikone.services import email
 
 deals = Blueprint('deals', __name__, url_prefix='/deals')
 
@@ -28,5 +28,5 @@ def post():
         deal.product_types.append(product_type)
     db.session.add_all([salesperson, deal])
     db.session.commit()
-    send_confirmation_email(deal)
+    email.send_confirmation_email(deal)
     return jsonify({}), 200
