@@ -1,5 +1,5 @@
 -r requirements.txt
-cov-core==1.14.0
+cov-core==1.15.0
 coverage==4.3.4
 execnet==1.4.1
 factory-boy==2.4.1
