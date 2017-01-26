@@ -13,7 +13,7 @@ pep8==1.5.7
 pies==2.6.1
 py==1.4.25
 pyflakes==0.8.1
-pytest-cov==1.8.0
+pytest-cov==2.4.0
 pytest-instafail==0.3.0
 pytest-xdist==1.15
 pytest==3.0.6
