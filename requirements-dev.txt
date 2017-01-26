@@ -7,7 +7,7 @@ flake8==2.2.5
 flexmock==0.9.7
 freezegun==0.2.1
 isort==3.9.0
-mccabe==0.2.1
+mccabe==0.6.0
 moto==0.4.31
 pep8==1.7.0
 pies==2.6.7
