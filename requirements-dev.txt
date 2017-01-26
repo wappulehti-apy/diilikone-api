@@ -1,6 +1,6 @@
 -r requirements.txt
 cov-core==1.14.0
-coverage==3.7.1
+coverage==4.3.4
 execnet==1.4.1
 factory-boy==2.4.1
 flake8==3.2.1
