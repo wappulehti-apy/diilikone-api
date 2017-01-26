@@ -2,7 +2,7 @@
 cov-core==1.15.0
 coverage==4.3.4
 execnet==1.4.1
-factory-boy==2.4.1
+factory-boy==2.8.1
 flake8==3.2.1
 flexmock==0.10.2
 freezegun==0.3.8
