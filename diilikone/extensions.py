@@ -17,8 +17,8 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
-
-# Assign automatic data type coercion. For example str representations of UUIDs
+# Assign automatic data type coercion.
+# For example str representations of UUIDs
 # are automatically coerced into UUID objects.
 force_auto_coercion()
 

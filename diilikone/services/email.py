@@ -3,7 +3,7 @@ from flask import render_template
 from flask_mail import Message
 
 from diilikone.extensions import mail
-from diilikone.models import Deal, GroupProvision, IndividualProvision
+from diilikone.models import GroupProvision, IndividualProvision
 
 
 def _calculateIndividualProvision(deal):

@@ -4,5 +4,12 @@ from wtforms.fields import PasswordField, StringField
 
 
 class LoginForm(Form):
-    email = StringField('Email', validators=[validators.input_required()])
-    password = PasswordField('Password', validators=[validators.input_required()])
+    email = StringField(
+        'Email',
+        validators=[validators.input_required()]
+    )
+
+    password = PasswordField(
+        'Password',
+        validators=[validators.input_required()]
+    )
