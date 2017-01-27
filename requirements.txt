@@ -1,10 +1,8 @@
 alembic==0.8.10
 Flask-Cors==3.0.2
-Flask-Failsafe==0.2
-Flask-Script==2.0.5
 Flask-SQLAlchemy==2.1
 Flask-Mail==0.9.1
-Flask==0.10.1
+Flask==0.12
 SQLAlchemy-Defaults==0.4.4
 SQLAlchemy-Utils==0.32.12
 SQLAlchemy==1.1.5
