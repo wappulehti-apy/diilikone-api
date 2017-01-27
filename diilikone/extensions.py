@@ -1,7 +1,7 @@
 import sqlalchemy as sa
-from flask.ext.cors import CORS
-from flask.ext.login import LoginManager
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from sqlalchemy_utils import force_auto_coercion
 

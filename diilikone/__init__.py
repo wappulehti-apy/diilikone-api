@@ -41,7 +41,7 @@ class Application(Flask):
         self.register_blueprint(product_types)
 
     def _init_admin_views(self):
-        from flask.ext.admin import Admin
+        from flask_admin import Admin
         from diilikone.models import User, Deal, DealGroup, ProductType
         from diilikone.admin.view import UserView, ProductView, DealGroupView, DealView
         from diilikone.admin.login import admin_login

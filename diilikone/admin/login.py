@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, url_for
-from flask.ext.login import login_required, login_user, logout_user
+from flask_login import login_required, login_user, logout_user
 
 from diilikone.admin.forms import LoginForm
 from diilikone.models import User

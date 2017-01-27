@@ -1,5 +1,5 @@
 from flask import url_for
-from flask.ext.login import current_user
+from flask_login import current_user
 from flask_admin.contrib.sqla import ModelView
 from jinja2 import Markup
 
