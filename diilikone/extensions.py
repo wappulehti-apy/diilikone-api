@@ -1,8 +1,8 @@
 import sqlalchemy as sa
 from flask_cors import CORS
 from flask_login import LoginManager
-from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import force_auto_coercion
 
 login_manager = LoginManager()

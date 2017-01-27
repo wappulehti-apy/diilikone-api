@@ -1,7 +1,6 @@
 import pytest
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy_utils import assert_non_nullable
-
 from tests.factories import IndividualProvisionFactory
 
 

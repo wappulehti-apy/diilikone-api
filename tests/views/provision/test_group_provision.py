@@ -1,8 +1,10 @@
 import pytest
 from flask import url_for
-
-from tests.factories import (DealFactory, DealGroupFactory,
-                             GroupProvisionFactory)
+from tests.factories import (
+    DealFactory,
+    DealGroupFactory,
+    GroupProvisionFactory
+)
 
 
 @pytest.mark.usefixtures('request_ctx', 'database')

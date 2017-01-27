@@ -3,7 +3,6 @@ from flask import Blueprint, jsonify, request
 from diilikone.extensions import db
 from diilikone.models import Deal, ProductType, User
 from diilikone.schemas import DealSchema
-
 from diilikone.services import email
 
 deals = Blueprint('deals', __name__, url_prefix='/deals')

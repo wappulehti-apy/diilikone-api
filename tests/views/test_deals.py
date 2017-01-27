@@ -3,10 +3,10 @@ import json
 import pytest
 from flask import url_for
 from flexmock import flexmock
+from tests.factories import DealGroupFactory, ProductTypeFactory
 
-from diilikone.services import email
 from diilikone.models import Deal, User
-from tests.factories import DealGroupFactory, ProductTypeFactory, IndividualProvisionFactory
+from diilikone.services import email
 
 
 @pytest.mark.usefixtures('request_ctx', 'database')

@@ -1,6 +1,7 @@
-from diilikone.models import DealGroup, ProductType, User
 from marshmallow import fields, Schema
 from marshmallow.validate import Length
+
+from diilikone.models import DealGroup, ProductType, User
 
 
 def validate_deal_group_id(group_id):

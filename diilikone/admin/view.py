@@ -1,6 +1,6 @@
 from flask import url_for
-from flask_login import current_user
 from flask_admin.contrib.sqla import ModelView
+from flask_login import current_user
 from jinja2 import Markup
 
 
