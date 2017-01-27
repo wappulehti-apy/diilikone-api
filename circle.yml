@@ -1,0 +1,15 @@
+machine:
+  python:
+    version: 3.5.1
+  services:
+    - postgresql
+  environment:
+    TEST_DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+dependencies:
+  override:
+    - pip install -r requirements-dev.txt
+test:
+  override:
+    - flake8 .
+    - isort -rc .
+    - py.test tests/

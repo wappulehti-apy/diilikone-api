@@ -1,5 +1,7 @@
 # Diilikone API
 
+[![CircleCI](https://circleci.com/gh/wappulehti-apy/diilikone-api.svg?style=shield)](https://circleci.com/gh/wappulehti-apy/diilikone-api)
+
 ## Requirements
 - Python 3.4
 - virtualenvwrapper
