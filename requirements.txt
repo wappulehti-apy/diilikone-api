@@ -15,4 +15,4 @@ Flask-Admin==1.4.2
 Flask-Login==0.4.0
 WTForms==2.1
 Flask-WTF==0.11
-passlib==1.6.2
+passlib==1.7.0
