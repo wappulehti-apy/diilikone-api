@@ -8,7 +8,7 @@ Flask==0.10.1
 SQLAlchemy-Defaults==0.4.4
 SQLAlchemy-Utils==0.32.12
 SQLAlchemy==1.1.5
--e git+https://github.com/marshmallow-code/marshmallow.git@7f3c5f43561c3f1f29442aa391ca24f8d80e43d7#egg=marshmallow-dev
+marshmallow==2.12.1
 psycopg2==2.6.2
 validators==0.7
 Flask-Admin==1.4.2
