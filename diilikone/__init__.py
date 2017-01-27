@@ -15,6 +15,8 @@ class Application(Flask):
         self._init_extensions()
         self._init_views()
         self._init_admin_views()
+        self.config['KONCH_CONTEXT'] = self._make_shell_context()
+        self.config['KONCH_SHELL'] = 'ipy'
 
     def _init_settings(self, environment=None):
         if environment is None:
@@ -53,6 +55,13 @@ class Application(Flask):
         admin.add_view(DealView(Deal, db.session))
         admin.add_view(DealGroupView(DealGroup, db.session))
         admin.add_view(ProductView(ProductType, db.session))
+
+    def _make_shell_context(self):  # pragma: no cover
+        load_models()
+        context = super().make_shell_context()
+        context['db'] = db
+        context.update(db.Model._decl_class_registry)
+        return context
 
 
 def load_models():
