@@ -1,7 +1,6 @@
 import pytest
 import sqlalchemy as sa
 from sqlalchemy_utils import assert_max_length, assert_non_nullable
-
 from tests.factories import UserFactory
 
 

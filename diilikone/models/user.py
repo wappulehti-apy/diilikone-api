@@ -1,4 +1,4 @@
-from flask.ext.login import UserMixin
+from flask_login import UserMixin
 from sqlalchemy_utils import EmailType, PasswordType, UUIDType
 
 from diilikone.extensions import db

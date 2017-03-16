@@ -15,6 +15,8 @@ class Application(Flask):
         self._init_extensions()
         self._init_views()
         self._init_admin_views()
+        self.config['KONCH_CONTEXT'] = self._make_shell_context()
+        self.config['KONCH_SHELL'] = 'ipy'
 
     def _init_settings(self, environment=None):
         if environment is None:
@@ -41,9 +43,14 @@ class Application(Flask):
         self.register_blueprint(product_types)
 
     def _init_admin_views(self):
-        from flask.ext.admin import Admin
+        from flask_admin import Admin
         from diilikone.models import User, Deal, DealGroup, ProductType
-        from diilikone.admin.view import UserView, ProductView, DealGroupView, DealView
+        from diilikone.admin.view import (
+            DealGroupView,
+            DealView,
+            ProductView,
+            UserView
+        )
         from diilikone.admin.login import admin_login
 
         self.register_blueprint(admin_login)
@@ -53,6 +60,13 @@ class Application(Flask):
         admin.add_view(DealView(Deal, db.session))
         admin.add_view(DealGroupView(DealGroup, db.session))
         admin.add_view(ProductView(ProductType, db.session))
+
+    def _make_shell_context(self):  # pragma: no cover
+        load_models()
+        context = super().make_shell_context()
+        context['db'] = db
+        context.update(db.Model._decl_class_registry)
+        return context
 
 
 def load_models():

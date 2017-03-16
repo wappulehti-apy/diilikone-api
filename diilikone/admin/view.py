@@ -1,6 +1,6 @@
 from flask import url_for
-from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
+from flask_login import current_user
 from jinja2 import Markup
 
 
@@ -20,9 +20,10 @@ class DealView(AuthRequired):
         return Markup(
             "<a href='%s'>%s</a>" % (
                 url_for('user.edit_view', id=model.salesperson.id),
-                model.salesperson.first_name + ' ' + model.salesperson.last_name
-
-
+                '{} {}'.format(
+                    model.salesperson.first_name,
+                    model.salesperson.last_name
+                )
             )
         ) if model.salesperson else ""
 

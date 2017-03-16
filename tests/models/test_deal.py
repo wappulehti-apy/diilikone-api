@@ -1,8 +1,8 @@
 import pytest
 from sqlalchemy_utils import assert_non_nullable
+from tests.factories import DealFactory, ProductTypeFactory
 
 from diilikone.extensions import db
-from tests.factories import DealFactory, ProductTypeFactory
 
 
 @pytest.mark.usefixtures('database')

@@ -1,8 +1,8 @@
 import sqlalchemy as sa
-from flask.ext.cors import CORS
-from flask.ext.login import LoginManager
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from flask_login import LoginManager
 from flask_mail import Mail
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import force_auto_coercion
 
 login_manager = LoginManager()
@@ -17,8 +17,8 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
-
-# Assign automatic data type coercion. For example str representations of UUIDs
+# Assign automatic data type coercion.
+# For example str representations of UUIDs
 # are automatically coerced into UUID objects.
 force_auto_coercion()
 

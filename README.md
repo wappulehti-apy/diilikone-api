@@ -1,19 +1,21 @@
 # Diilikone API
 
+[![CircleCI](https://circleci.com/gh/wappulehti-apy/diilikone-api.svg?style=shield)](https://circleci.com/gh/wappulehti-apy/diilikone-api)
+
 ## Requirements
 - Python 3.4
--- asdasd
 - virtualenvwrapper
+- autoenv
 - postgresql
 
 ## Development environment setup
 ### Create virtualenv
 ```shell
-$ mkvirtualenv --python=$(which python3.4) diilikone-api
+$ mkvirtualenv --python=$(which python3.5) diilikone-api
 ```
 ### Install python dependecies
 ```shell
-$ pip install -r requirements.txt
+$ pip install -r requirements-dev.txt
 ```
 ### Create development and testing databases
 ```shell
@@ -24,13 +26,24 @@ $ createdb diilikone_test
 ```shell
 $ alembic upgrade head
 ```
+### Add required environment variables
+```shell
+echo 'workon diilikone-api' >> .env
+echo 'export FLASK_APP=$(pwd)/autoapp.py' >> .env
+echo 'export DEBUG=1' >> .env
+```
+
 ### Run tests
 ```shell
 py.test
 ```
 ### Start development server
 ```shell
-python manage.py runserver
+flask run
+```
+### Start Shell
+```shell
+flask konch
 ```
 
 
