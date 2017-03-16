@@ -4,14 +4,14 @@ CORS_HEADERS = 'Content-Type'
 
 MAIL_SERVER = os.environ.get('MAIL_SERVER')
 
-MAIL_PORT = int(os.environ.get('MAIL_PORT'))
+MAIL_PORT = int(os.environ.get('MAIL_PORT', 0))
 
 MAIL_USERNAME = os.environ.get('MAIL_USER')
 
 MAIL_PASSWORD = os.environ.get('MAIL_KEY')
 
 MAIL_DEFAULT_SENDER = os.environ.get('MAIL_SENDER')
-MAIL_USE_TLS = bool(os.environ.get('MAIL_USE_TLS'))
+MAIL_USE_TLS = bool(os.environ.get('MAIL_USE_TLS', False))
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
