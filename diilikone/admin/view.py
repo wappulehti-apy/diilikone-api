@@ -6,7 +6,7 @@ from jinja2 import Markup
 
 class AuthRequired(ModelView):
     def is_accessible(self):
-        return current_user.is_authenticated()
+        return current_user.is_authenticated
 
 
 class UserView(AuthRequired):

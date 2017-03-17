@@ -1,4 +1,5 @@
 from sqlalchemy_utils import UUIDType
+from datetime import datetime
 
 from diilikone.extensions import db
 
@@ -59,6 +60,12 @@ class Deal(db.Model):
         'ProductType',
         secondary=deal_product_type,
         backref=db.backref('deals')
+    )
+
+    created_at = db.Column(
+        db.DateTime,
+        server_default=db.func.now(),
+        default=datetime.now()
     )
 
     def __repr__(self):
