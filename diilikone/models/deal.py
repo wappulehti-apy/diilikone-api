@@ -1,4 +1,5 @@
 from sqlalchemy_utils import UUIDType
+
 from datetime import datetime
 
 from diilikone.extensions import db
@@ -66,6 +67,11 @@ class Deal(db.Model):
         db.DateTime,
         server_default=db.func.now(),
         default=datetime.now()
+    )
+
+    notes = db.Column(
+        db.Unicode(255),
+        nullable=True
     )
 
     def __repr__(self):
