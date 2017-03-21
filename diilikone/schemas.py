@@ -1,5 +1,5 @@
 from marshmallow import fields, Schema
-from marshmallow.validate import Length
+from marshmallow.validate import Length, Range
 
 from diilikone.models import DealGroup, ProductType, User
 
@@ -43,3 +43,20 @@ class DealSchema(Schema):
 class DealGroupSchema(Schema):
     deal_group_id = fields.UUID(validator=validate_deal_group_id)
     deals = fields.Nested(DealSchema, many=True)
+
+
+class TotalProvisionSchema(Schema):
+    size = fields.Integer(
+        required=True,
+        validate=[Range(max=1000, min=25)]
+    )
+    group_id = fields.UUID(
+        allow_none=True,
+        validator=validate_deal_group_id,
+    )
+    product_ids = fields.List(
+        fields.UUID(
+            required=True,
+            validator=validate_product_type_id
+        ),
+    )
