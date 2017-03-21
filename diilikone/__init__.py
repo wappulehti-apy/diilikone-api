@@ -5,7 +5,7 @@ from flask import Flask
 import pkgutil
 import importlib
 
-from .extensions import cors, db, mail, login_manager
+from .extensions import cors, db, mail, login_manager, CustomJSONEncoder
 
 
 class Application(Flask):
@@ -29,6 +29,7 @@ class Application(Flask):
         db.init_app(self)
         mail.init_app(self)
         login_manager.init_app(self)
+        self.json_encoder = CustomJSONEncoder
 
     def _init_views(self):
         from .views.dummy import dummy

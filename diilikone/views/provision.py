@@ -2,6 +2,8 @@ import validators
 from flask import abort, Blueprint, jsonify, request
 
 from diilikone.models import DealGroup, GroupProvision, IndividualProvision
+from diilikone.schemas import TotalProvisionSchema
+from diilikone.services.provision import calculate
 
 provision = Blueprint('provision', __name__, url_prefix='/provision')
 
@@ -35,3 +37,13 @@ def get_group():
     return jsonify(
         {'price_per_magazine': str(provision.price_per_magazine)}
     ), 200
+
+
+@provision.route('/total', methods=['POST'])
+def get_total():
+    data, errors = TotalProvisionSchema().load(request.get_json(force=True))
+    if errors:
+        abort(400)
+
+    provisions = calculate(data)
+    return jsonify(**provisions), 200

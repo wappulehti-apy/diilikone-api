@@ -1,4 +1,7 @@
+from decimal import Decimal
+
 import sqlalchemy as sa
+from flask.json import JSONEncoder
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_mail import Mail
@@ -9,6 +12,19 @@ login_manager = LoginManager()
 cors = CORS()
 db = SQLAlchemy()
 mail = Mail()
+
+
+class CustomJSONEncoder(JSONEncoder):
+    def default(self, obj):
+        try:
+            if isinstance(obj, Decimal):
+                return float(obj)
+            iterable = iter(obj)
+        except TypeError:
+            pass
+        else:
+            return list(iterable)
+        return JSONEncoder.default(self, obj)
 
 
 @login_manager.user_loader
