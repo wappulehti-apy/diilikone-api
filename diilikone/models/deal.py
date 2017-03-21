@@ -1,6 +1,6 @@
-from sqlalchemy_utils import UUIDType
-
 from datetime import datetime
+
+from sqlalchemy_utils import UUIDType
 
 from diilikone.extensions import db
 
