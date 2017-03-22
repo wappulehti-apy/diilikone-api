@@ -24,6 +24,13 @@ class DealGroup(db.Model):
         unique=True
     )
 
+    percentage = db.Column(
+        db.Integer,
+        nullable=False,
+        default=0,
+        server_default='0'
+    )
+
     owner = db.relationship('User')
 
     @property
