@@ -74,6 +74,27 @@ class Deal(db.Model):
         nullable=True
     )
 
+    shirt_received = db.Column(
+        db.Boolean,
+        default=False,
+        server_default='f',
+        nullable=False
+    )
+
+    backpack_received = db.Column(
+        db.Boolean,
+        default=False,
+        server_default='f',
+        nullable=False
+    )
+
+    magazines_received = db.Column(
+        db.Integer,
+        nullable=False,
+        default=0,
+        server_default='0'
+    )
+
     def __repr__(self):
         return '<{cls} size={size!r}, salesperson={name!r}>'.format(
             cls=self.__class__.__name__,
