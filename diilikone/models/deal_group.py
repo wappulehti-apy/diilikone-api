@@ -12,6 +12,12 @@ class DealGroup(db.Model):
         primary_key=True
     )
 
+    secret_id = db.Column(
+        UUIDType(binary=False),
+        server_default=db.func.uuid_generate_v4(),
+        nullable=False
+    )
+
     name = db.Column(db.Unicode(255), nullable=False)
 
     frozen_magazine_amount = db.Column(db.Integer, nullable=True)
@@ -29,6 +35,11 @@ class DealGroup(db.Model):
         nullable=False,
         default=0,
         server_default='0'
+    )
+
+    target_description = db.Column(
+        db.Unicode(255),
+        nullable=True
     )
 
     owner = db.relationship('User')
