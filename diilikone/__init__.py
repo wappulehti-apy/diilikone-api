@@ -37,11 +37,13 @@ class Application(Flask):
         from .views.deal_groups import deal_groups
         from .views.provision import provision
         from .views.product_types import product_types
+        from .views.deal_status import deal_status
         self.register_blueprint(dummy)
         self.register_blueprint(deals)
         self.register_blueprint(deal_groups)
         self.register_blueprint(provision)
         self.register_blueprint(product_types)
+        self.register_blueprint(deal_status)
 
     def _init_admin_views(self):
         from flask_admin import Admin
