@@ -37,6 +37,11 @@ class DealGroup(db.Model):
         server_default='0'
     )
 
+    target_description = db.Column(
+        db.Unicode(255),
+        nullable=True
+    )
+
     owner = db.relationship('User')
 
     @property
