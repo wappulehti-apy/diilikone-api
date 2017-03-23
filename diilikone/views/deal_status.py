@@ -17,7 +17,7 @@ def index(secret_id):
         {
             'group_name': deal_group.name,
             'total_size': deal_group.total_size,
-            'total_money': 'TODO calculate',
+            'total_money': deal_group.total_money,
             'percentage': deal_group.percentage,
             'target_description': deal_group.target_description,
             'salespersons': [
