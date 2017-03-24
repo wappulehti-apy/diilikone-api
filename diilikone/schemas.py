@@ -23,18 +23,17 @@ class UserSchema(Schema):
     last_name = fields.Str(required=True, validate=Length(max=255))
     email = fields.Email(required=True, validate=validate_email)
     phone_number = fields.Str(required=True, validate=Length(max=20))
-    guild = fields.Str(required=True, validate=Length(max=100))
     class_year = fields.Str(required=True, validate=Length(max=10))
 
 
 class DealSchema(Schema):
-    deal_group_id = fields.UUID(
+    group_id = fields.UUID(
         validator=validate_deal_group_id,
         allow_none=True
     )
     size = fields.Integer(required=True, validator=lambda x: x % 25 == 0)
     salesperson = fields.Nested(UserSchema)
-    product_types = fields.List(
+    product_ids = fields.List(
         fields.UUID(validator=validate_product_type_id),
         allow_none=True
     )
