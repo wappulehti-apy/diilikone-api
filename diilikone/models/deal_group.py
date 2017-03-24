@@ -49,6 +49,17 @@ class DealGroup(db.Model):
         sizes = [deal.size for deal in self.deals]
         return sum(sizes)
 
+    @property
+    def total_money(self):
+        from diilikone.services.provision import calculate_group_part
+        return (
+            (
+                calculate_group_part(self.id, 0) *
+                self.total_size *
+                self.percentage
+            ) / 100
+        )
+
     def __repr__(self):
         return '<{cls} name={name!r}>'.format(
             cls=self.__class__.__name__,
