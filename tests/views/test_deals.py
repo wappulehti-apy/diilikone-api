@@ -47,9 +47,9 @@ class TestDealsPostFullData(DealsPOSTTestCase):
     @pytest.fixture
     def data(self, deal_group, product_types):
         return {
-            'deal_group_id': '9e96eb6d-f113-483e-8ce8-ce5296004269',
+            'group_id': '9e96eb6d-f113-483e-8ce8-ce5296004269',
             'size': 25,
-            'product_types': [
+            'product_ids': [
                 'a0d0c7c3-bcf3-49a9-9dd7-68faa14b7ba6',
                 'e8d3767f-9051-4192-bc6a-0013b3cab871'
             ],
@@ -58,7 +58,6 @@ class TestDealsPostFullData(DealsPOSTTestCase):
                 'last_name': 'Uimonen',
                 'email': 'vesa@fastmonkeys.com',
                 'phone_number': '+358405409708',
-                'guild': 'Tietokilta',
                 'class_year': 'N'
             }
         }
@@ -73,7 +72,6 @@ class TestDealsPostFullData(DealsPOSTTestCase):
         assert salesperson.last_name == 'Uimonen'
         assert salesperson.email == 'vesa@fastmonkeys.com'
         assert salesperson.phone_number == '+358405409708'
-        assert salesperson.guild == 'Tietokilta'
         assert salesperson.class_year == 'N'
 
     def test_creates_deal_with_correct_data(
@@ -89,15 +87,14 @@ class TestDealsPostMinimumData(DealsPOSTTestCase):
     @pytest.fixture
     def data(self):
         return {
-            'deal_group_id': None,
+            'group_id': None,
             'size': 25,
-            'product_types': [],
+            'product_ids': [],
             'salesperson': {
                 'first_name': 'Vesa',
                 'last_name': 'Uimonen',
                 'email': 'vesa@fastmonkeys.com',
                 'phone_number': '+358405409708',
-                'guild': 'Tietokilta',
                 'class_year': 'N'
             }
         }

@@ -17,12 +17,12 @@ def post():
 
     salesperson = User(**data['salesperson'])
     deal = Deal(
-        size=data['size'],
-        deal_group_id=data['deal_group_id'],
+        size=data.get('size'),
+        deal_group_id=data.get('group_id', None),
         salesperson=salesperson
     )
 
-    for product_type_id in data['product_types']:
+    for product_type_id in data.get('product_ids'):
         product_type = ProductType.query.get(product_type_id)
         deal.product_types.append(product_type)
     db.session.add_all([salesperson, deal])
