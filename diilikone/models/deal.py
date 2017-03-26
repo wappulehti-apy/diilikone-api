@@ -101,3 +101,9 @@ class Deal(db.Model):
             size=self.size,
             name=self.salesperson.name
         )
+
+    def __str__(self):
+        return '{name}, {size}'.format(
+            name=self.salesperson.name,
+            size=self.size
+        )

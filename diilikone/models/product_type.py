@@ -31,3 +31,8 @@ class ProductType(db.Model):
             price=self.price,
             name=self.name
         )
+
+    def __str__(self):
+        return '{name}'.format(
+            name=self.name
+        )

@@ -65,3 +65,8 @@ class DealGroup(db.Model):
             cls=self.__class__.__name__,
             name=self.name
         )
+
+    def __str__(self):
+        return '{name}'.format(
+            name=self.name
+        )
