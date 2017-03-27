@@ -95,6 +95,17 @@ class Deal(db.Model):
         server_default='0'
     )
 
+    @property
+    def provision(self):
+        from diilikone.services.provision import calculate
+        asd = {
+            'deal_exists': True,
+            'size': self.size,
+            'group_id': self.deal_group_id,
+            'product_ids': [product.id for product in self.product_types]
+        }
+        return calculate(asd).get('total')
+
     def __repr__(self):
         return '<{cls} size={size!r}, salesperson={name!r}>'.format(
             cls=self.__class__.__name__,
