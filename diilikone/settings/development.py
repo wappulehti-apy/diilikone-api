@@ -7,5 +7,3 @@ SECRET_KEY = 'development_key'
 WTF_CSRF_ENABLED = False
 
 DEBUG = True
-
-MAIL_SUPPRESS_SEND = True

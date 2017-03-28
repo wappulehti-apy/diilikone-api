@@ -41,9 +41,13 @@ def calculate(data):
     size = data.get('size')
     group_id = data.get('group_id', None)
     product_ids = data.get('product_ids', [])
+    deal_exists = data.get('deal_exists', False)
 
     individual_part = calculate_individual_part(size)
-    group_part = calculate_group_part(group_id, size)
+    if deal_exists:
+        group_part = calculate_group_part(group_id, 0)
+    else:
+        group_part = calculate_group_part(group_id, size)
     products_price = calculate_total_price_of_products(product_ids)
     guild_cut = calculate_group_cut(group_id, size)
 

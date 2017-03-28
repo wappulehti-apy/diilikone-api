@@ -33,15 +33,7 @@ def send_confirmation_email(deal):
         bcc=["diilit@apy.fi"]
     )
 
-    provision = _calculateIndividualProvision(deal)
-    group_provision = _get_group_provision(deal.deal_group)
-
-    msg.body = render_template(
-        'confirmation_email.txt',
-        deal=deal,
-        provision=provision,
-        group_provision=group_provision
-    )
+    msg.body = render_template('confirmation_email.txt', deal=deal)
 
     mail.send(msg)
     return True
