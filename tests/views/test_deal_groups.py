@@ -20,10 +20,16 @@ class TestProvision(object):
         response = client.get(url_for('deal_groups.index'))
         assert response.json['data'] == [
             {
-                'id': str(deal_groups[1].id), 'name': 'Fyysikkokilta'
+                'id': str(deal_groups[1].id),
+                'name': 'Fyysikkokilta',
+                'percentage': 0,
+                'target_description': None,
             },
             {
-                'id': str(deal_groups[0].id), 'name': 'Tietokilta'
+                'id': str(deal_groups[0].id),
+                'name': 'Tietokilta',
+                'percentage': 0,
+                'target_description': None,
             }
         ]
 
