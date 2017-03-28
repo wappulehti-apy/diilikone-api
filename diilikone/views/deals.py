@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 
 from diilikone.extensions import db
-from diilikone.models import Deal, ProductType, User
+from diilikone.models import Deal, DealGroup, ProductType, User
 from diilikone.schemas import DealSchema
 from diilikone.services import email
 
@@ -29,3 +29,24 @@ def post():
     db.session.commit()
     email.send_confirmation_email(deal)
     return jsonify({}), 200
+
+
+@deals.route('/top-groups', methods=['GET'])
+def top_groups():
+    not_empty_deals = filter(
+        lambda deal_group: deal_group.total_size > 0, DealGroup.query.all()
+    )
+
+    top3 = sorted(
+        not_empty_deals, key=lambda deal_group: deal_group.total_size,
+        reverse=True
+    )[:3]
+
+    data = [
+        {
+            'name': deal_group.name,
+            'size': deal_group.total_size
+        } for deal_group in top3
+    ]
+
+    return jsonify({'data': data}), 200
