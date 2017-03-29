@@ -54,10 +54,12 @@ def calculate(data):
     total_provision = (
         (individual_part + group_part) * size - products_price - guild_cut
     )
-    per_magazine = total_provision / size
+
+    per_magazine_individual = calculate_individual_part(size)
 
     return {
       'total': round(total_provision, 2),
-      'per_magazine': round(per_magazine, 2),
+      'per_magazine_individual': round(per_magazine_individual, 2),
+      'per_magazine_group': round(group_part, 2),
       'group': round(guild_cut, 2)
     }
