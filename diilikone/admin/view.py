@@ -12,10 +12,12 @@ class AuthRequired(ModelView):
 
 
 class UserView(AuthRequired):
+    page_size = 400
     column_searchable_list = ('first_name', 'last_name')
 
 
 class DealView(AuthRequired):
+    page_size = 400
     column_list = ('salesperson', 'deal_group', 'size')
 
     def _salesperson_formatter(view, context, model, name):
