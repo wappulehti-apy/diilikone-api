@@ -19,12 +19,6 @@ def index(secret_id):
         'total_money': deal_group.total_money,
         'percentage': deal_group.percentage,
         'target_description': deal_group.target_description,
-        'salespersons': [
-            {
-                'name': deal.salesperson.name,
-                'size': deal.size
-            } for deal in deal_group.deals
-        ]
     }
 
     return jsonify({'data': data}), 200
