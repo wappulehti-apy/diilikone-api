@@ -52,7 +52,8 @@ class Application(Flask):
             DealGroupView,
             DealView,
             ProductView,
-            UserView
+            UserView,
+            StatusView
         )
         from diilikone.admin.login import admin_login
 
@@ -63,6 +64,7 @@ class Application(Flask):
         admin.add_view(DealView(Deal, db.session))
         admin.add_view(DealGroupView(DealGroup, db.session))
         admin.add_view(ProductView(ProductType, db.session))
+        admin.add_view(StatusView(name='Status', endpoint='status'))
 
     def _make_shell_context(self):  # pragma: no cover
         load_models()
