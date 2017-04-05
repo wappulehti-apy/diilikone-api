@@ -1,7 +1,9 @@
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
+from flask_admin import BaseView, expose
 from flask_login import current_user
 from jinja2 import Markup
+from diilikone.services import overall
 
 
 class AuthRequired(ModelView):
@@ -49,3 +51,13 @@ class ProductView(AuthRequired):
 
 class DealGroupView(AuthRequired):
     column_list = ('name', 'total_size')
+
+
+class StatusView(BaseView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    @expose('/')
+    def index(self):
+        data = overall.get_status_data()
+        return self.render('admin/status.html', data=data)
