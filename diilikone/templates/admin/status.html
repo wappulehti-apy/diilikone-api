@@ -2,10 +2,25 @@
 {% block body %}
 
 <div class="container">
-  <div>
-    <h4> Yhteensä:</h4>
-    <p> {{ data.salespersons }} myyjää </p>
-    <p> {{ data.total_size }}</p>
+  <div class="row-fluid">
+    <div class='span5'>
+      <h4> Yhteensä:</h4>
+      <p> {{ data.salespersons }} myyjää </p>
+      <p> {{ data.total_size }}</p>  
+
+    </div>
+
+    <div class='span4'>
+      <h4> Tuotteita noutamatta / varattu diileissä:</h4>
+      <p> Paidat: {{ data.shirts_to_be_fetched }} /  {{ data.total_shirts}} </p>
+      <p> Reput: {{ data.backpacks_to_be_fetched }} /  {{ data.total_backpacks}} </p>
+    </div>
+
+     <div class='span3'>
+      <h4> Lehtiä noutamatta:</h4>
+      <p> TODO </p>
+    </div>
+    
   </div>
   <div class="row-fluid">
     <div class="span5">
