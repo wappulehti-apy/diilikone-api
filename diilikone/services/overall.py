@@ -3,6 +3,7 @@ from diilikone.models import (
     DealGroup,
     ProductType
 )
+from sqlalchemy import func
 
 
 def get_status_data():
@@ -27,6 +28,9 @@ def get_status_data():
     shirts_to_be_fetched = sum(
         1 for d in deals_with_shirts if not d.shirt_received)
 
+    magazines_to_be_fetched = Deal.query.with_entities(
+        func.sum(Deal.size - Deal.magazines_received)).scalar()
+
     sorted_groups = sorted(
         groups, key=lambda deal_group: deal_group.total_size,
         reverse=True
@@ -43,5 +47,6 @@ def get_status_data():
         'backpacks_to_be_fetched': backpacks_to_be_fetched,
         'total_shirts': len(deals_with_shirts),
         'total_backpacks': len(deals_with_backpacks),
+        'magazines_to_be_fetched': magazines_to_be_fetched,
     }
     return data
